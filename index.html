@@ -3,26 +3,128 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>優待コンパス</title>
+  <meta name="description" content="株主優待を簡単に探せる検索・診断サービス" />
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header class="hero">
+  <header>
     <div class="logo">🧭 優待コンパス</div>
     <h1>株主優待選びを、もっと簡単に。</h1>
-    <p>予算・欲しい優待・権利月から、自分に合う株主優待を探せる診断ツールです。</p>
+    <p>
+      予算・欲しい優待・権利月・銘柄検索から、
+      自分に合いそうな株主優待を探せる診断ツールです。
+    </p>
   </header>
 
   <main class="container">
-    <section class="card">
-      <h2>かんたん優待診断</h2>
-      <p>まずはここに診断機能を作っていきます。</p>
+    <section class="grid">
+      <div class="card">
+        <h2>株主優待をかんたん検索</h2>
+        <p class="lead">
+          銘柄名や証券コードで検索しながら、予算・優待種類・権利月で絞り込めます。
+        </p>
+        <p class="lead">
+          まずは検索・ランキング・カード表示を土台にして、ここから詳細画面やお気に入り機能を追加していきます。
+        </p>
+        <div class="notice">
+          ※表示データは試作用のサンプルです。投資判断を推奨するものではありません。
+          実際に購入する場合は必ず最新情報を確認してください。
+        </div>
+      </div>
 
-      <button id="startButton">診断を始める</button>
-      <p id="message"></p>
+      <div class="card">
+        <h2>かんたん診断</h2>
+
+        <div class="form-row">
+          <label for="keyword">候補検索</label>
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input
+              id="keyword"
+              type="text"
+              placeholder="銘柄名・証券コードで検索"
+              autocomplete="off"
+            />
+            <div id="suggestList" class="suggest-list"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="budget">予算</label>
+          <input
+            id="budget"
+            type="number"
+            value="500000"
+            min="0"
+            step="10000"
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="type">欲しい優待</label>
+          <select id="type">
+            <option value="any">こだわらない</option>
+            <option value="食事券">食事券</option>
+            <option value="QUOカード">QUOカード</option>
+            <option value="カタログギフト">カタログギフト</option>
+            <option value="自社商品">自社商品</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label>権利月</label>
+          <div class="month-buttons" id="monthButtons"></div>
+        </div>
+
+        <div class="form-row">
+          <label for="priority">重視すること</label>
+          <select id="priority">
+            <option value="balance">バランス重視</option>
+            <option value="yield">利回り重視</option>
+            <option value="lowcost">少額で買いやすい</option>
+            <option value="beginner">初心者向け</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label>並び替え</label>
+          <div class="sort-buttons" id="sortButtons"></div>
+        </div>
+
+        <button class="main-btn" id="diagnoseButton">おすすめを診断する</button>
+        <button class="sub-btn" id="resetButton">条件をリセット</button>
+
+        <div id="count" class="count"></div>
+        <div id="results" class="results"></div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <strong>🔍 サジェスト検索</strong>
+        <p>入力途中で候補銘柄を表示します。</p>
+      </div>
+
+      <div class="feature">
+        <strong>📊 ランキング</strong>
+        <p>総合利回り・必要資金・配当利回りで並び替えできます。</p>
+      </div>
+
+      <div class="feature">
+        <strong>⭐ 次に追加予定</strong>
+        <p>詳細画面・お気に入り機能を追加予定です。</p>
+      </div>
     </section>
   </main>
 
+  <footer>
+    © 優待コンパス
+  </footer>
+
+  <script src="data/data.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
